@@ -1,11 +1,14 @@
 export interface Project {
+  id: string;
   title: string;
   description: string;
   image: string;
   tags: string[];
-  longDescription?: string;
-  features?: string[];
-  technologies?: string[];
+  longDescription: string;
+  features: string[];
+  technologies: string[];
+  role?: string;
+  duration?: string;
   demoLink?: string;
   githubLink?: string;
 }
@@ -31,4 +34,4 @@ export interface Skill {
   title: string;
   icon: any;
   skills: string[];
-} 
+}

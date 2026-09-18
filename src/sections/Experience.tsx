@@ -1,11 +1,54 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, GraduationCap } from 'lucide-react';
 import { SectionHeading } from '../components/ui/SectionHeading';
 
 export const Experience = () => {
+  const experience = [
+    {
+      title: 'Tier 2 Technical Support Representative',
+      company: 'Concentrix',
+      period: 'Apr 2024 – Aug 2025',
+      location: 'Canada',
+      points: [
+        'Resolved 30–40 escalated technical support tickets daily, diagnosing reported issues and restoring service within response targets.',
+        'Performed root-cause analysis on recurring incidents, applied documented fixes, and escalated complex cases with clear technical detail.',
+        'Maintained precise case records and contributed to knowledge-base documentation so repeat issues were resolved faster.'
+      ]
+    },
+    {
+      title: 'Software Developer',
+      company: 'Arethos Venture',
+      period: 'Jan 2021 – Jul 2022',
+      location: 'Mohali, India',
+      points: [
+        'Developed and shipped features for client software products across UI, business logic and database layers in an agile team.',
+        'Designed and maintained SQL schemas, queries and stored procedures, and built REST API endpoints that kept features fast and reliable.',
+        'Applied object-oriented design patterns, wrote unit tests, participated in code reviews and story estimation, and documented technical decisions.'
+      ]
+    }
+  ];
+
+  const education = [
+    {
+      degree: 'Post-Graduate Diploma',
+      field: 'Information Technology',
+      school: 'Conestoga College',
+      period: '2022 – 2023',
+      location: 'Kitchener, ON',
+      points: ['Software development, web technologies and database coursework']
+    },
+    {
+      degree: 'B.Tech',
+      field: 'Computer Science & Engineering',
+      school: 'Chandigarh Group of Colleges, Landran',
+      period: '2017 – 2021',
+      location: 'India',
+      points: ['Computer science fundamentals: data structures, databases and software engineering']
+    }
+  ];
+
   return (
-    <section id="experience" className="py-12 bg-blue-50/50">
+    <section id="experience" className="py-16 bg-blue-50/50">
       <div className="container mx-auto px-4 lg:px-6">
         <SectionHeading>Experience & Education</SectionHeading>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -15,34 +58,23 @@ export const Experience = () => {
             <div className="relative">
               <div className="absolute left-8 w-1 h-full bg-blue-200 z-0" />
               <div className="space-y-8">
-                {[
-                  
-                  {
-                    title: "Full Stack Angular Developer",
-                    company: "Arethos Venture",
-                    period: "Jan 2021 – July 2022",
-                    location: "India",
-                    points: [
-                      "Developed reusable Angular components",
-                      "Integrated RESTful APIs with RxJS and NgRx",
-                      "Enhanced application performance"
-                    ]
-                  },
-                  {
-                    title: "Angular Developer",
-                    company: "Info Viz Solutions",
-                    period: "Jan 2020 – dec 2020",
-                    location: "India",
-                    points: [
-                      "Architected and implemented reusable Angular components",
-                      "Integrated robust APIs with RxJS and NgRx",
-                      "Built responsive interfaces with Angular Material",
-                      "Optimized performance with lazy loading and caching"
-                    ]
-                  }
-                ].map((experience, index) => (
-                  <ExperienceCard key={index} {...experience} />
+                {experience.map((item, index) => (
+                  <ExperienceCard key={index} {...item} />
                 ))}
+              </div>
+            </div>
+
+            {/* Additional experience from the resume — kept brief, off the main timeline */}
+            <div className="relative pl-16 mt-8">
+              <motion.div className="absolute left-[29px] top-3 w-4 h-4 bg-blue-300 rounded-full border-4 border-white shadow z-10" />
+              <div className="bg-white/70 border border-blue-100 p-5 rounded-lg">
+                <h4 className="font-semibold text-gray-800 mb-2 text-sm uppercase tracking-wide">
+                  Additional experience
+                </h4>
+                <ul className="space-y-1 text-sm text-gray-600">
+                  <li>Operations Manager — Subway, Ontario</li>
+                  <li>Production Operator — Greenfield Agriculture Products Inc., Kitchener, ON</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -53,25 +85,8 @@ export const Experience = () => {
             <div className="relative">
               <div className="absolute left-8 w-1 h-full bg-purple-200 z-0" />
               <div className="space-y-8">
-                {[
-                  {
-                    degree: "Post Graduate Certificate",
-                    field: "Web Development",
-                    school: "",
-                    period: "2023 – 2024",
-                    location: "Waterloo,Canada",
-                    points: ["Advanced Web Development", "Full Stack Development"]
-                  },
-                  {
-                    degree: "Bachelor of Technology",
-                    field: "Computer Science",
-                    school: "Punjab Technical University",
-                    period: "2018 – 2022",
-                    location: "Punjab, India",
-                    points: ["Data Structures", "Web Technologies"]
-                  }
-                ].map((education, index) => (
-                  <EducationCard key={index} {...education} />
+                {education.map((item, index) => (
+                  <EducationCard key={index} {...item} />
                 ))}
               </div>
             </div>
@@ -137,4 +152,4 @@ const EducationCard = ({ degree, field, school, period, location, points }: any)
       </ul>
     </motion.div>
   </motion.div>
-); 
+);

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Code, X, Menu } from 'lucide-react';
+import { profile } from '../../data/profile';
 
 interface NavbarProps {
   scrollToSection?: (id: string) => void;
@@ -16,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
   ];
 
   return (
-    <motion.nav 
+    <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100 }}
@@ -28,15 +29,15 @@ export const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
     >
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex justify-between items-center h-16">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold text-blue-600 cursor-pointer flex items-center gap-2"
+            className="text-base sm:text-xl font-bold text-blue-600 cursor-pointer flex items-center gap-2"
             onClick={() => scrollToSection?.('hero')}
           >
-            <Code className="w-5 h-5" />
-            <span>Portfolio</span>
+            <Code className="w-5 h-5 flex-shrink-0" />
+            <span>{profile.name}</span>
           </motion.h1>
 
           {/* Desktop Navigation */}
@@ -55,8 +56,9 @@ export const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden p-2"
+            aria-label="Toggle navigation menu"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
@@ -69,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="md:hidden py-4 border-t"
@@ -94,4 +96,4 @@ export const Navbar: React.FC<NavbarProps> = ({ scrollToSection }) => {
       </div>
     </motion.nav>
   );
-}; 
+};

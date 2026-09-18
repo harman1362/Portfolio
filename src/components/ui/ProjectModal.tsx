@@ -1,20 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { X, ExternalLink, Github, Calendar, Tag, CheckCircle2 } from 'lucide-react';
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  longDescription: string;
-  features: string[];
-  technologies: string[];
-  demoLink: string;
-  githubLink: string;
-  duration?: string;
-  role?: string;
-}
+import type { Project } from '../../types';
 
 interface ProjectModalProps {
   project: Project;
@@ -50,18 +37,19 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
       >
         {/* Hero Section */}
         <div className="relative h-56">
-          <img 
+          <img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-          
-          {/* Close Button - Moved inside hero section */}
+
+          {/* Close Button */}
           <motion.button
             onClick={onClose}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            aria-label="Close project details"
             className="absolute top-4 right-4 p-3 rounded-full bg-white/90 shadow-lg hover:bg-white z-10 cursor-pointer"
           >
             <X className="w-6 h-6 text-gray-800" strokeWidth={2.5} />
@@ -149,7 +137,7 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex gap-4 pt-4 border-t">
+          <div className="flex flex-wrap gap-4 pt-4 border-t">
             {project.demoLink && (
               <motion.a
                 href={project.demoLink}

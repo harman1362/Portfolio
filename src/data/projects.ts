@@ -1,97 +1,151 @@
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  tags: string[];
-  longDescription: string;
-  features: string[];
-  technologies: string[];
-  demoLink: string;
-  githubLink: string;
-  role?: string;
-  duration?: string;
-  // Add other properties as needed
-}
+import type { Project } from '../types';
 
-export const projects = [
+/**
+ * Featured projects. Every entry maps to a real repository on
+ * https://github.com/harman1362 — no placeholder links.
+ */
+export const projects: Project[] = [
   {
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    title: "Dynamic Dashboard for Analytics",
-    description: "A comprehensive analytics dashboard with reusable Angular components, real-time data visualization, and NgRx state management.",
-    tags: ["Angular", "D3.js", "NgRx"],
-    longDescription: "Built a sophisticated analytics dashboard that processes and visualizes complex data in real-time. The application features interactive charts, customizable widgets, and advanced filtering capabilities. Users can monitor key metrics, analyze trends, and generate detailed reports.",
-    role: "Lead Frontend Developer",
-    duration: "6 months",
+    id: 'eventhub',
+    title: 'EventHub — Event Management Platform',
+    description:
+      'A full-stack event platform built on the MERN stack: organisers publish events, attendees register, admins manage listings.',
+    image:
+      'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800',
+    tags: ['React', 'Node.js', 'Express', 'MongoDB'],
+    longDescription:
+      'EventHub brings events from many organisers into a single place. A React single-page front end talks to a Node.js/Express REST API backed by MongoDB, with a separate admin area for publishing events, an attendee registration flow and cookie-based session handling.',
+    role: 'Full Stack Developer',
+    duration: 'Personal project',
     features: [
-      "Real-time data visualization with D3.js",
-      "Customizable dashboard layouts",
-      "Advanced filtering and search capabilities",
-      "Data export functionality",
-      "User authentication and role-based access",
-      "Interactive charts and graphs",
-      "Responsive design for all devices",
-      "Dark mode support"
-    ],
-    technologies: ["Angular", "D3.js", "NgRx", "TypeScript", "RxJS", "Angular Material", "SCSS", "Jest"],
-    demoLink: "https://demo-link.com",
-    githubLink: "https://github.com/yourusername/project"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-    title: "E-Commerce Platform",
-    description: "A modern e-commerce platform with real-time inventory management, secure payment processing, and personalized user experiences.",
-    tags: ["React", "Node.js", "MongoDB", "AWS"],
-    longDescription: "Developed a full-stack e-commerce solution that handles thousands of daily transactions. The platform includes advanced features like real-time inventory tracking, secure payment processing, and AI-powered product recommendations.",
-    role: "Full Stack Developer",
-    duration: "8 months",
-    features: [
-      "Real-time inventory management with WebSocket",
-      "Secure payment gateway integration (Stripe)",
-      "User authentication with JWT and OAuth",
-      "Personalized product recommendations",
-      "Admin dashboard with analytics",
-      "Order tracking and management system",
-      "Product search with Elasticsearch",
-      "Mobile-responsive design"
+      'Event listing, event detail and registration flows',
+      'Admin area for creating and managing events',
+      'Role-based views separating admin and attendee access',
+      'Client-side routing across Home, Events, Event Detail and Admin',
+      'REST API integration through a central Axios client',
+      'Lightweight global state with Zustand and toast-based user feedback',
     ],
     technologies: [
-      "React", "Redux", "Node.js", 
-      "Express", "MongoDB", "Stripe", 
-      "AWS S3", "Redis", "Docker",
-      "Elasticsearch", "Socket.IO"
+      'React', 'React Router', 'Zustand', 'Axios',
+      'Node.js', 'Express', 'MongoDB', 'REST APIs',
     ],
-    demoLink: "https://demo-store.com",
-    githubLink: "https://github.com/yourusername/ecommerce"
+    githubLink: 'https://github.com/harman1362/EventHub',
   },
   {
-    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800",
-    title: "Real Estate Management System",
-    description: "A comprehensive real estate platform featuring property listings, virtual tours, and an advanced booking system.",
-    tags: ["Next.js", "Python", "PostgreSQL", "GCP"],
-    longDescription: "Built a feature-rich real estate management system that connects property owners with potential buyers/renters. The platform includes virtual property tours, automated scheduling, and advanced search functionality.",
-    role: "Lead Full Stack Developer",
-    duration: "10 months",
+    id: 'employee-management',
+    title: 'Employee Management System',
+    description:
+      'A CRUD admin front end for employee records — create, list and update records against a REST API.',
+    image:
+      'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800',
+    tags: ['React', 'Tailwind CSS', 'REST API'],
+    longDescription:
+      'A component-driven React application for managing employee records. Each screen is a small reusable component — table view, create form and edit form — wired to REST endpoints with explicit loading and error states.',
+    role: 'Front End Developer',
+    duration: 'Personal project',
     features: [
-      "Advanced property search with filters",
-      "Virtual 3D property tours",
-      "Automated viewing scheduling system",
-      "Real-time chat with agents",
-      "Document verification system",
-      "Property comparison tool",
-      "Mortgage calculator",
-      "Analytics dashboard for agents",
-      "Email notification system",
-      "Review and rating system"
+      'Employee table view with create and edit forms',
+      'Reusable component structure (table, create, edit)',
+      'REST API calls with Axios and explicit loading/error handling',
+      'Responsive layout built with Tailwind CSS utilities',
+      'Consistent iconography with Heroicons',
     ],
     technologies: [
-      "Next.js", "TypeScript", "Python",
-      "FastAPI", "PostgreSQL", "Redis",
-      "Google Cloud", "Docker", "Kubernetes",
-      "WebRTC", "SendGrid", "Matterport API"
+      'React', 'JavaScript', 'Tailwind CSS', 'Axios',
+      'REST APIs', 'Heroicons',
     ],
-    demoLink: "https://realestate-demo.com",
-    githubLink: "https://github.com/yourusername/realestate"
+    githubLink: 'https://github.com/harman1362/AFS-Frontend-React',
   },
-  // ... other projects
+  {
+    id: 'police-data-api',
+    title: 'Public Safety Data API',
+    description:
+      'A Node.js service that collects publicly published incident data, stores it in MongoDB and serves it over a REST API.',
+    image:
+      'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=800',
+    tags: ['Node.js', 'Express', 'MongoDB', 'Puppeteer'],
+    longDescription:
+      'A back-end service that scrapes publicly published incident data, normalises it into structured documents and exposes it as clean JSON for a separate front end to consume. Written as a layered Node.js project: scraper, models, routes.',
+    role: 'Backend Developer',
+    duration: 'Personal project',
+    features: [
+      'Scraping pipeline built with Puppeteer and Cheerio',
+      'MongoDB persistence through Mongoose schemas',
+      'Express router layer exposing clean JSON endpoints',
+      'Environment-based configuration with dotenv',
+      'CORS enabled so a separate front end can consume the API',
+    ],
+    technologies: [
+      'Node.js', 'Express', 'MongoDB', 'Mongoose',
+      'Puppeteer', 'Cheerio', 'REST APIs',
+    ],
+    githubLink: 'https://github.com/harman1362/canadianForcesServer',
+  },
+  {
+    id: 'expense-tracker',
+    title: 'Expense Tracker',
+    description:
+      'A split front-end / back-end expense tracker: React UI posting to an Express REST API.',
+    image:
+      'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800',
+    tags: ['React', 'Express', 'REST API'],
+    longDescription:
+      'A small two-repository project that separates concerns cleanly: a React front end for entering and reviewing daily expenses, and an Express server that exposes the API it talks to.',
+    role: 'Full Stack Developer',
+    duration: 'Personal project',
+    features: [
+      'React front end for adding and listing daily expenses',
+      'Separate Express server exposing REST endpoints',
+      'CORS and JSON body handling configured for the SPA',
+      'Environment configuration through dotenv',
+    ],
+    technologies: ['React', 'JavaScript', 'Node.js', 'Express', 'REST APIs', 'CORS'],
+    githubLink: 'https://github.com/harman1362/expense-tracker-frontend',
+  },
+  {
+    id: 'task-scheduler',
+    title: 'Task Scheduler',
+    description:
+      'A task scheduling application built in Angular with TypeScript — typed models, a service layer and unit tests.',
+    image:
+      'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&q=80&w=800',
+    tags: ['Angular', 'TypeScript', 'SCSS'],
+    longDescription:
+      'An Angular application for scheduling and tracking tasks, structured around typed models, a dedicated task service and a routed module layout, with unit tests wired through Karma and Jasmine.',
+    role: 'Front End Developer',
+    duration: 'Personal project',
+    features: [
+      'Angular application with routing and a modular structure',
+      'Typed task models with a dedicated task service',
+      'SCSS styling with reusable component styles',
+      'Unit tests wired through Karma and Jasmine',
+    ],
+    technologies: ['Angular', 'TypeScript', 'RxJS', 'SCSS', 'Karma', 'Jasmine'],
+    githubLink: 'https://github.com/harman1362/Tasks-Scheduler',
+  },
+  {
+    id: 'portfolio-website',
+    title: 'Portfolio Website',
+    description:
+      'This site — a React 18 + TypeScript single-page portfolio built with Vite and published to GitHub Pages.',
+    image:
+      'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&q=80&w=800',
+    tags: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    longDescription:
+      'A typed React single-page application that presents experience, skills and projects with section navigation and detail modals. Built with Vite, styled with Tailwind CSS, animated with Framer Motion and deployed to GitHub Pages.',
+    role: 'Developer',
+    duration: 'Personal project',
+    features: [
+      'React 18 + TypeScript component architecture',
+      'Vite build tooling with a GitHub Pages deploy pipeline',
+      'Tailwind CSS utility styling and a responsive layout',
+      'Framer Motion scroll and hover animations',
+      'Project detail modals with keyboard (Esc) support',
+    ],
+    technologies: [
+      'React', 'TypeScript', 'Vite', 'Tailwind CSS',
+      'Framer Motion', 'GitHub Pages',
+    ],
+    githubLink: 'https://github.com/harman1362/Portfolio',
+  },
 ];

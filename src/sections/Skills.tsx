@@ -1,57 +1,42 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Server, PenTool, Linkedin, Database, Cloud, Zap } from 'lucide-react';
+import { Code, Monitor, Database, Wrench, Linkedin, Mail } from 'lucide-react';
 import { SectionHeading } from '../components/ui/SectionHeading';
+import { profile, summary } from '../data/profile';
 
 export const Skills = () => {
   const skillCategories = [
     {
-      title: 'Frontend Development',
+      title: 'Languages',
       icon: Code,
-      skills: [
-        'React.js', 'Angular', 'Next.js',
-        'TypeScript', 'JavaScript (ES6+)',
-        'HTML5/CSS3', 'TailwindCSS',
-        'Redux/NgRx',
-        'Responsive Design', 'Bootstrap'
-      ]
+      skills: ['JavaScript', 'TypeScript', 'C#', 'Java', 'Python', 'SQL']
     },
     {
-      title: 'Backend Development',
-      icon: Server,
-      skills: [
-        'Node.js', 'Express.js',
-        'C#/.NET Core', 'Python',
-        'RESTful APIs', 'GraphQL',
-        'Microservices', 'WebSockets',
-        'Authentication/JWT', 'OAuth',
-        'API Security', 'Swagger/OpenAPI'
-      ]
+      title: 'Frameworks & Web',
+      icon: Monitor,
+      skills: ['React', '.NET', 'ASP.NET Core', 'Node.js', 'HTML5', 'CSS3']
     },
     {
-      title: 'Databases & Storage',
+      title: 'Backend, APIs & Data',
       icon: Database,
       skills: [
-        'MongoDB', 'PostgreSQL',
-        'MySQL',
-        'Firebase', 'SQL Server',
-        'Database Design', 'ORM/Mongoose'
+        'REST APIs', 'JSON/XML integration',
+        'SQL Server', 'PostgreSQL', 'MySQL',
+        'Schema design', 'Stored procedures'
       ]
     },
     {
-      title: 'Cloud & DevOps',
-      icon: Cloud,
+      title: 'Practices & Tooling',
+      icon: Wrench,
       skills: [
-        'AWS Services', 'Azure',
-        'Docker', 'Kubernetes',
-        'CI/CD', 'Jenkins',
-        'GitHub Actions', 'Linux'
+        'Git', 'CI/CD', 'Agile/Scrum',
+        'Code review', 'Unit testing',
+        'AI-assisted development'
       ]
     }
   ];
 
   return (
-    <section id="skills" className="py-12 bg-gray-50">
+    <section id="skills" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4 lg:px-6">
         <SectionHeading>Skills & Expertise</SectionHeading>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -64,28 +49,48 @@ export const Skills = () => {
           >
             <h3 className="text-2xl font-bold text-gray-800">Get to know me!</h3>
             <div className="space-y-4">
-              <p className="text-gray-600 leading-relaxed">
-                I'm a passionate full-stack developer with expertise in building scalable web applications. 
-                My strong foundation in both frontend and backend technologies allows me to create 
-                comprehensive solutions that deliver exceptional user experiences.
-              </p>
-              <p className="text-gray-600 leading-relaxed">
-                I stay current with industry trends and continuously expand my skillset to tackle 
-                modern development challenges. I'm particularly interested in cloud architecture, 
-                microservices, and building high-performance applications.
-              </p>
+              {summary.about.map((paragraph) => (
+                <p key={paragraph.slice(0, 40)} className="text-gray-600 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
             </div>
-            <motion.a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              <Linkedin className="w-5 h-5" />
-              Connect on LinkedIn
-            </motion.a>
+
+            <ul className="space-y-2 text-sm text-gray-600">
+              {[
+                { label: 'Based in', value: profile.location },
+                { label: 'Availability', value: profile.availability },
+                { label: 'Email', value: profile.email }
+              ].map((item) => (
+                <li key={item.label} className="flex gap-2">
+                  <span className="font-semibold text-gray-800 min-w-[92px]">{item.label}:</span>
+                  <span>{item.value}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex flex-wrap gap-3">
+              <motion.a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                <Linkedin className="w-5 h-5" />
+                Connect on LinkedIn
+              </motion.a>
+              <motion.a
+                href={`mailto:${profile.email}`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-white transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+                Email me
+              </motion.a>
+            </div>
           </motion.div>
 
           {/* Right Column - Skills Grid */}
@@ -106,8 +111,8 @@ export const Skills = () => {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
-                    <span 
-                      key={skill} 
+                    <span
+                      key={skill}
                       className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs"
                     >
                       {skill}
@@ -121,4 +126,4 @@ export const Skills = () => {
       </div>
     </section>
   );
-}; 
+};

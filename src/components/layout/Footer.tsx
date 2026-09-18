@@ -1,6 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import { profile } from '../../data/profile';
 
 export const Footer = () => {
   return (
@@ -12,18 +12,21 @@ export const Footer = () => {
     >
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">
-            © 2024 Harmanpreet Singh. All rights reserved.
+          <p className="text-gray-400 text-sm text-center md:text-left">
+            © {new Date().getFullYear()} {profile.name} — {profile.role}. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             {[
-              { href: "https://github.com", icon: Github },
-              { href: "https://linkedin.com", icon: Linkedin },
-              { href: "mailto:workwithharman@gmail.com", icon: Mail }
+              { href: profile.github, icon: Github, label: 'GitHub' },
+              { href: profile.linkedin, icon: Linkedin, label: 'LinkedIn' },
+              { href: `mailto:${profile.email}`, icon: Mail, label: 'Email' }
             ].map((social) => (
               <motion.a
-                key={social.href}
+                key={social.label}
                 href={social.href}
+                target={social.href.startsWith('http') ? '_blank' : undefined}
+                rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                aria-label={social.label}
                 whileHover={{ y: -5 }}
                 className="p-2 hover:text-blue-400 transition-colors"
               >
@@ -35,4 +38,4 @@ export const Footer = () => {
       </div>
     </motion.footer>
   );
-}; 
+};
